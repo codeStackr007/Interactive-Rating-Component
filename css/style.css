@@ -1,0 +1,262 @@
+/* ====================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ==================================== */
+:root {
+  /* Colors */
+  --Orange-500: hsl(25, 97%, 53%);
+  --White: hsl(0, 0%, 100%);
+  --Grey-500: hsl(217, 12%, 63%);
+  --Grey-900: hsl(213, 19%, 18%);
+  --Grey-950: hsl(216, 12%, 8%);
+
+  /* Typography */
+  --fs-base: 15px;
+  --fs-title: 1.6rem;
+  --fs-paragraph: 0.90625rem;
+  --font-family-body: "Overpass", sans-serif;
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  /* Other */
+  --transition: all 0.3s ease-in-out;
+}
+
+/* ====================================
+   CSS RESETS & BASE STYLES
+   ==================================== */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+  color: var(--White);
+  font-family: var(--font-family-body);
+  font-size: var(--fs-base);
+  background-color: var(--Grey-950);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ====================================
+   LAYOUT UTILITIES
+   ==================================== */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ====================================
+   CARD COMPONENTS (SHARED)
+   ==================================== */
+.rating-card,
+.thank-you-card {
+  display: flex;
+  flex-flow: column;
+  max-width: 400px;
+  background-image: linear-gradient(
+    to bottom,
+    hsl(212deg 18.72% 15.31%),
+    hsl(220, 16%, 11%)
+  );
+  border-radius: 1.15rem;
+  padding: 2rem 1.35rem;
+  transition: var(--transition);
+}
+
+.thank-you-card {
+  text-align: center;
+}
+
+.rating-card__title,
+.thank-you-card__title {
+  color: var(--White);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-bold);
+}
+
+.rating-card__description,
+.thank-you-card__description {
+  color: var(--Grey-500);
+  padding-top: 0.7rem;
+  font-size: var(--fs-paragraph);
+  font-weight: var(--fw-normal);
+}
+
+/* ====================================
+   RATING CARD SPECIFIC
+   ==================================== */
+.rating-card__icon {
+  background: var(--Grey-900);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-card__title {
+  padding-top: 2rem;
+}
+
+.rating-card__ratings {
+  display: flex;
+  align-items: center;
+  padding-top: 1.8rem;
+  gap: 1.1rem;
+  justify-content: space-evenly;
+}
+
+.rating-card__ratings-btn {
+  color: var(--Grey-500);
+  background: var(--Grey-900);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-paragraph);
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.rating-card__ratings-btn:hover {
+  background-color: var(--Orange-500);
+  color: var(--White);
+}
+
+.rating-card__ratings-btn.active {
+  background: var(--White);
+  color: var(--Grey-950);
+}
+
+.rating-card__submit-btn,
+.thank-you-card__rateagain-btn {
+  background: var(--Orange-500);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  color: var(--White);
+  border-radius: 22px;
+  margin: 1.8rem auto 0;
+  padding: 0.8rem;
+  width: 97%;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+
+.rating-card__submit-btn:hover,
+.thank-you-card__rateagain-btn:hover {
+  background-color: var(--White);
+  color: var(--Grey-950);
+}
+
+/* ====================================
+   THANK YOU CARD SPECIFIC
+   ==================================== */
+
+.thank-you-card__selected-rating {
+  background: var(--Grey-900);
+  color: var(--Orange-500);
+  border-radius: 1.875rem;
+  font-weight: var(--fw-normal);
+  width: 52%;
+  padding: 0.35rem 0.6rem 0.2rem;
+  text-align: center;
+  margin: 1.2rem auto;
+  font-size: 12px;
+}
+
+.thank-you-card__title {
+  padding-top: 0.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ====================================
+   FOOTER & ATTRIBUTION
+   ==================================== */
+.attribution {
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+  font-size: 11.5px;
+  font-family: var(--font-family-body);
+  font-weight: var(--fw-bold);
+  color: var(--White);
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--Orange-500);
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+/* ====================================
+   MEDIA QUERIES & ACCESSIBILITY
+   ==================================== */
+@media (min-width: 48rem) {
+  .rating-card {
+    padding: 2rem 1.8rem;
+  }
+
+  .thank-you-card {
+    padding: 2.5rem 1.8rem;
+  }
+
+  .rating-card__ratings-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .thank-you-card__description {
+    max-width: 35ch;
+  }
+
+  .attribution {
+    font-size: var(--fs-paragraph);
+  }
+
+  .rating-card__description,
+  .thank-you-card__description {
+    line-height: 1.6;
+    font-size: var(--fs-base);
+  }
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--White);
+  outline-offset: 2px;
+}
